@@ -3,11 +3,10 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import TodoScreen from '../screens/TodoScreen';
 import HomeScreen from '../screens/HomeScreen';
-
-
-const Stack = createNativeStackNavigator();
-
+import AddTodoScreen from '../screens/AddTodoScreen';
 const TodoStack = () => {
+
+  const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator screenOptions={{
         headerTintColor: "white",
@@ -17,6 +16,10 @@ const TodoStack = () => {
     }}
     >
         <Stack.Screen name="Home" component={ HomeScreen }/>
+
+        <Stack.Screen name="AddTodo" component={ AddTodoScreen }  
+        options={ ({ route }) => ({title: route.params.name})}/>
+
         <Stack.Screen name="Todo" component={ TodoScreen }  
         options={ ({ route }) => ({title: route.params.name})}/>
     </Stack.Navigator>

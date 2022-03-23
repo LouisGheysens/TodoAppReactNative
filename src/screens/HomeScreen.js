@@ -5,6 +5,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Todo app</Text>
+      <Text style={styles.name}>Louis Gheysens</Text>
     </View>
   )
 }
