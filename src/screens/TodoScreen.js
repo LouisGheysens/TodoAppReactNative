@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, FlatList, Button } from 'react-native'
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { removeTodo } from "../../store/todos/slice";
+import AddTodoScreen from './AddTodoScreen';
 
 const TodoScreen = () => {
 
@@ -13,6 +14,7 @@ const TodoScreen = () => {
       <View>
         <Text>{item.name}</Text>
         <Button
+        style={styles.deleteButton}
           title="Delete"
           onPress={() => dispatch(removeTodo(item.id))}
         />
@@ -40,5 +42,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     marginTop: 10,
+    fontSize: 30
+  },
+  deleteButton: {
+    backgroundColor: 'red'
   }
 })

@@ -1,26 +1,32 @@
-import { Button, StyleSheet, Text, View, useState } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TextInput } from 'react-native-gesture-handler';
+import { addTodo } from "../../store/todos/slice";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
-const AddTodoScreen = () => {
+const AddTodoScreen = ({ navigation }) => {
   
-  const [text, onChangeText] = useState("Todo");
-
+  const [text, setText] = React.useState(" ");
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Todo toevoegen</Text>
+      <Text style={styles.title}>Add todo</Text>
 
       <TextInput
       style={styles.input}
-      onChangeText={onChangeText}
+      onChangeText={(text) => setText(text)}
       value={text}
       />
 
       <Button
       title='Voeg toe'
-      onPress={() => dispatch(addTodo({ ...item, id: uuidv4() }))}
+      onPress={() => 
+        navigation.navigate("Todo", {
+          value: text
+        },
+      dispatch(addTodo({ ...text, id: uuidv4() })))}
       color="#841584"
       />
     </View>
@@ -51,6 +57,7 @@ input: {
     height: 40,
     margin: 12,
     justifyContent: 'center',
+    textAlign: 'center',
     borderWidth: 1,
     padding: 10,
   },
