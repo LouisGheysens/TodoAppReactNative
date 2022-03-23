@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import TodoScreen from '../screens/TodoScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -15,7 +17,7 @@ const TodoStack = () => {
     }}
     >
         <Stack.Screen name="Home" component={ HomeScreen }/>
-        <Stack.Screen name="Todo" component={ TodoScreen$ }  
+        <Stack.Screen name="Todo" component={ TodoScreen }  
         options={ ({ route }) => ({title: route.params.name})}/>
     </Stack.Navigator>
   )
