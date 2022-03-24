@@ -8,6 +8,11 @@ import { v4 as uuidv4 } from "uuid";
 const AddTodoScreen = ({ navigation }) => {
   
   const [text, setText] = React.useState(" ");
+
+  const resetFunc = (val) => {
+    setText('');
+  }
+
   const dispatch = useDispatch();
 
   return (
@@ -20,15 +25,26 @@ const AddTodoScreen = ({ navigation }) => {
       value={text}
       />
 
+      <View style={styles.buttonRows}>
+      <View style={styles.button}>
       <Button
-      title='Voeg toe'
-      onPress={() => 
-        navigation.navigate("Todo", {
-          value: text
-        },
-      dispatch(addTodo({ ...text, id: uuidv4() })))}
-      color="#841584"
+       title="Voeg toe"
+      disabled={!text}
+      style={styles.button}
+      onPress={() => dispatch(addTodo({ ...text, id: uuidv4() }))}
       />
+      </View>
+
+      <View style={styles.button2}>
+      <Button
+       title="Reset"
+      disabled={!text}
+      style={styles.button}
+      onPress={() => resetFunc(text)}
+      />
+      </View>
+      </View>
+
     </View>
   )
 }
@@ -40,10 +56,25 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
 },
+buttonRows: {
+  flexDirection: 'row'
+},
 name: {
     fontSize: 18,
     textAlign: "center",
     marginTop: 8,
+},
+button: {
+  marginHorizontal: 20,
+  marginTop: 5,
+  marginRight: 150,
+  backgroundColor: 'yellow'
+},
+button2: {
+  marginHorizontal: 20,
+  marginTop: 5,
+  marginRight: 150,
+  backgroundColor: 'red'
 },
 title: {
     fontWeight: 'bold',
