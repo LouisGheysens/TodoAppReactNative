@@ -1,19 +1,20 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Alert, Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TextInput } from 'react-native-gesture-handler';
 import { addTodo } from "../../store/todos/slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, connect, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
-const AddTodoScreen = ({ navigation }) => {
+const AddTodoScreen = ({ props }) => {
   
   const [text, setText] = React.useState(" ");
+  const dispatch = useDispatch();
 
   const resetFunc = (val) => {
     setText('');
   }
 
-  const dispatch = useDispatch();
+
 
   return (
     <View style={styles.container}>
@@ -31,8 +32,7 @@ const AddTodoScreen = ({ navigation }) => {
        title="Voeg toe"
       disabled={!text}
       style={styles.button}
-      onPress={() => dispatch(addTodo({ ...text, id: uuidv4() }))}
-      />
+      onPress={() => dispatch(addTodo({ ...text, id: uuidv4()  }))}/>
       </View>
 
       <View style={styles.button2}>
@@ -49,7 +49,7 @@ const AddTodoScreen = ({ navigation }) => {
   )
 }
 
-export default AddTodoScreen
+export default AddTodoScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -68,13 +68,13 @@ button: {
   marginHorizontal: 20,
   marginTop: 5,
   marginRight: 150,
-  backgroundColor: 'yellow'
+  backgroundColor: 'darkgreen'
 },
 button2: {
   marginHorizontal: 20,
   marginTop: 5,
   marginRight: 150,
-  backgroundColor: 'red'
+  backgroundColor: 'darkred'
 },
 title: {
     fontWeight: 'bold',

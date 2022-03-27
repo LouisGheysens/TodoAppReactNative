@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, FlatList, Button } from 'react-native'
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { removeTodo } from "../../store/todos/slice";
-import AddTodoScreen from './AddTodoScreen';
 
 const TodoScreen = () => {
 
@@ -10,6 +9,7 @@ const TodoScreen = () => {
   const todosState = useSelector((state) => state.todos);
 
   const todoItem = ({ item }) => {
+
     return (
       <View>
         <Text>{item.name}</Text>
