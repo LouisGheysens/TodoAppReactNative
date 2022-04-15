@@ -32,7 +32,7 @@ const AddTodoScreen = ({ props }) => {
        title="Voeg toe"
       disabled={!text}
       style={styles.button}
-      onPress={() => dispatch(addTodo({ ...text, id: uuidv4()  }))}/>
+      onPress={() => dispatch(addTodo({ name: text, id: uuidv4()  }))}/>
       </View>
 
       <View style={styles.button2}>

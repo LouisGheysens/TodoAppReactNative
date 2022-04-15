@@ -12,7 +12,7 @@ const TodoScreen = () => {
 
     return (
       <View>
-        <Text>{item.name}</Text>
+        <Text>{item}</Text>
         <Button
         style={styles.deleteButton}
           title="Delete"
@@ -27,9 +27,9 @@ const TodoScreen = () => {
     <View>
      <FlatList
         data={todosState}
-        renderItem={todoItem}
-        ListEmptyComponent={() => <Text style={styles.blankTodo}>No todo's</Text>}
+        ListEmptyComponent={<Text style={styles.blankTodo}>No todo's</Text>}
         keyExtractor={(item) => item.id}
+        renderItem={({item}) => (<Text >{item.name}</Text>)}
       />
     </View>
   )
